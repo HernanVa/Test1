@@ -39,7 +39,7 @@ void dijkstra(char grafo[V][V], int inic)		//A la funcion se le entrega el grafo
 		Visto[u] = true;						//Escribe el vertice u como ya revisado 
 
 	for (int v = 0; v < V; v++)			//Revision de las distancias de los vertices abyacentes
-	    if (!Visto[v] && grafo[u][v] && dist[u] != INT_MAX && dist[u]+grafo[u][v] < dist[v]) //Se efectuara si  
+	    if (!Visto[v] && grafo[u][v] && dist[u] != INT_MAX && dist[u]+grafo[u][v] > dist[v]) //Se efectuara si  
         //v, no se ha visto & existe una arista entre v y u & las distancia de u no es infinito & la distancia entre el inicio y u es menor a la distancia a v
         	dist[v] = dist[u] + grafo[u][v];
     }
@@ -50,11 +50,11 @@ void dijkstra(char grafo[V][V], int inic)		//A la funcion se le entrega el grafo
 int main()
 {
 	//char fila[1], colum[1];
-	char grafo[V][V] = {{0, 1, 4, 0, 2},   //grafo contenedor de los valores entre las relaciones de los vertices
+	char grafo[V][V] = {{0, -1, 4, 0, 2},   //grafo contenedor de los valores entre las relaciones de los vertices
                     	{0, 0, 3, 2, 0},
                       	{0, 0, 0, 0, 0},
                   		{0, 1, 5, 0, 0},
-                   		{0, 0, 0, 3, 0}                    
+                   		{0, 0, 0, -3, 0}                    
                    		};
                      
 	dijkstra(grafo, 0);  //Se le entrega a la funcion el grafo y el punto inicial
